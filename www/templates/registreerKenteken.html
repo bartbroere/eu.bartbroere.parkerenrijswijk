@@ -1,0 +1,24 @@
+<ion-view title="Registreer kenteken" id="page2">
+  <ion-content padding="true" class="has-header">
+    <ion-refresher on-refresh="refreshAllData()"></ion-refresher>
+    <form id="menu-form1" class="list" data-componentid="form1">
+      <ion-item ng-if="permits[0].ZoneCode != undefined">Rijswijk {{permits[0].ZoneCode}}</ion-item>
+      <ion-item ng-if="permits[0].ZoneCode != undefined">{{permits[0].Balance}} minuten over</ion-item>
+      <ion-item class="item-text-wrap" ng-if="permits[0].ZoneCode == undefined">Nog geen vergunning geladen. Voeg een vergunning toe of veeg naar beneden om te vernieuwen.</ion-item>
+      <label class="item item-input" id="kenteken" data-componentid="input2">
+        <span class="input-label">Kenteken</span>
+        <input type="text" class="kenteken text-center" ng-model="kenteken">
+      </label>
+      <label class="item item-input" id="begindag" data-componentid="input2">
+        <span class="input-label">Parkeren vanaf</span>
+        <input type="datetime-local" placeholder="" ng-model="starttijd">
+      </label>
+      <label class="item item-input" id="einddag" data-componentid="input3">
+        <span class="input-label">Parkeren tot</span>
+        <input type="datetime-local" placeholder="" ng-model="eindtijd">
+      </label>
+      <button ng-click="registreerKenteken(kenteken, starttijd, eindtijd)" id="menu-button1" class="button button-positive button-block" data-componentid="button1">Registreer parkeertijd</button>
+    </form>
+    <h3 class="balanced">{{successfull}}</h3>
+  </ion-content>
+</ion-view>

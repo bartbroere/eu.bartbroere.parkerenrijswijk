@@ -1,0 +1,29 @@
+<ion-view title="Aangemelde kentekens" id="page3">
+  <ion-content padding="false" class="has-header">
+    <!-- TODO show list of registrations -->
+    <!-- TODO add stop button -->
+    <ion-refresher on-refresh="refreshAllData()"></ion-refresher>
+    <ion-list>
+      <ion-item>
+        <h3>Op dit moment actief</h3>
+      </ion-item>
+      <ion-item class="balanced item item-button-right" ng-repeat="registration in data.Permits[0].PermitMedias[0].ActiveReservations">{{registration.LicensePlate.Value}}
+        <br>
+        {{registration.ValidFrom | date : 'd-MMM-yy H:mm'}} tot {{registration.ValidUntil | date : 'd-MMM-yy H:mm'}}
+        <button class="button button-assertive button-large" ng-click="stopAanmelding(registration.ReservationID)">
+          <i class="icon ion-ios-stop"></i>
+        </button>
+      </ion-item>
+      <ion-item ng-if="data.Permits[0].PermitMedias[0].ActiveReservations.length == 0">
+        Geen actieve registraties. Veeg naar beneden om te vernieuwen.
+      </ion-item>
+      <ion-item>
+        <h3>Alles</h3>
+      </ion-item>
+      <ion-item class="calm" ng-repeat="registration in data.Permits[0].PermitMedias[0].History.Reservations.Items">{{registration.LicensePlate.Value}}<br>{{registration.ValidFrom | date : 'd-MMM-yy H:mm'}} tot {{registration.ValidUntil | date : 'd-MMM-yy H:mm'}}</ion-item>
+      <ion-item ng-if="data.Permits[0].PermitMedias[0].History.Reservations.Items.length == 0">
+        Geen registraties bekend.
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

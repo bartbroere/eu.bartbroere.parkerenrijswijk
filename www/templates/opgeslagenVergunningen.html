@@ -1,0 +1,15 @@
+<ion-view title="Parkeervergunningen" id="page4">
+  <ion-content padding="true" class="has-header">
+    <label class="item item-input" id="nummer" data-componentid="input2">
+      <span class="input-label">Inlognummer</span>
+      <input type="text" placeholder="" ng-model="identifier">
+    </label>
+    <label class="item item-input" id="pincode" data-componentid="input2">
+      <span class="input-label">Pincode</span>
+      <input type="password" placeholder="" ng-model="password">
+    </label>
+    <button on-tap="savePermit(identifier, password)" id="menu-button1" class="button button-positive button-block" data-componentid="button1">Sla vergunning op</button>
+    <h3 class="balanced">{{successfull}}</h3>
+    <h3 class="assertive">{{error}}</h3>
+  </ion-content>
+</ion-view>
